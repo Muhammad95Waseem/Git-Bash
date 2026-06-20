@@ -1,0 +1,85 @@
+# Comparing Versions
+
+## Comparing an Unstaged File
+
+### `git diff filename.extension`
+
+Shows changes made to a file that have **not been staged**.
+
+```bash
+$ git diff app.py
+
+diff --git a/app.py b/app.py
+index 8d31f4c..9f7b2d1 100644
+--- a/app.py
++++ b/app.py
+@@ -1,5 +1,5 @@
+-print("Login failed")
+ print("Welcome")
+ print("Dashboard")
+ print("Charts")
++print("Login successful")
+```
+
+### Understanding the Output
+
+```text
+--- a/app.py     # Original version
++++ b/app.py     # Modified version
+
+@@ -1,5 +1,5 @@
+```
+
+- `-1,5` → In the old file, the shown section starts at line **1** and contains **5 lines**.
+- `+1,5` → In the new file, the shown section starts at line **1** and contains **5 lines**.
+- Lines beginning with `-` were removed.
+- Lines beginning with `+` were added.
+- Lines without symbols are unchanged.
+
+---
+
+## Comparing a Staged File
+
+### `git diff --staged filename.extension`
+
+Shows staged changes that will be included in the next commit.
+
+```bash
+$ git diff --staged app.py
+```
+
+---
+
+## Comparing All Staged Files
+
+### `git diff --staged`
+
+Shows staged changes for all files.
+
+```bash
+$ git diff --staged
+```
+
+---
+
+## Comparing Two Commits
+
+### `git diff hash1 hash2`
+
+Shows differences between two commits.
+
+```bash
+$ git diff a3f5c1d 8f3e2c1
+```
+
+---
+
+### `git diff HEAD~1 HEAD`
+
+Compares the latest commit with its previous commit.
+
+```bash
+$ git diff HEAD~1 HEAD
+```
+
+`HEAD` refers to the current commit, while `HEAD~1` refers to its parent commit.
